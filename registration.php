@@ -29,16 +29,21 @@
 
 			<form name="registration" method="POST" action="database.php">
 
-				<div>
-					<p>Client Type:</p>
+				<div class="form-group">
+					<h4>Client Type:</h4>
 					<input type="radio" name="reason" id="supplier_of_goods" value="supplier_of_goods" /> <label
-						for="supplier_of_goods">Supplier of Goods</label>
+						for="supplier_of_goods" class="input-sm">Supplier of Goods</label>
+
 					<input type="radio" name="reason" id="supplier_of_services" value="supplier_of_services" /> <label
-						for="supplier_of_services">Supplier of Services</label>
+						for="supplier_of_services" class="input-sm">Supplier of Services</label>
+
 					<input type="radio" name="reason" id="administrator" value="administrator" /> <label
-						for="administrator">Administrator</label>
-					<input type="radio" name="reason" id="farmer" value="farmer" /> <label for="farmer">Farmer</label>
-					<input type="radio" name="reason" id="buyer" value="buyer" /> <label for="buyer">Buyer</label>
+						for="administrator" class="input-sm">Administrator</label>
+
+					<input type="radio" name="reason" id="farmer" value="farmer" /> <label for="farmer" class="input-sm">Farmer</label>
+
+					<input type="radio" name="reason" id="buyer" value="buyer" /> <label for="buyer" class="input-sm">Buyer</label>
+
 				</div>
 
 
