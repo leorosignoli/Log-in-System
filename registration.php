@@ -1,3 +1,6 @@
+<?php
+	require_once('config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +18,32 @@
 			padding: 20px;
 		}
 	</style>
+	<?php
+		if(isset($_POST['submit']))
+			echo 'Working';
+			$name		 = $_POST['name'];
+			$last_name   = $_POST['last_name'];
+			$email 		 = $_POST['email'];
+			$password 	 = $_POST['password'];
+			$reason 	 = $_POST['reason'];
+			
+			echo $name . $last_name . $email . $password . $reason;
+
+			$sql = "INSERT INTO emails (TYPE_OF_CLIENT, FIRST_NAME, LAST_NAME, E-MAIL, PASSWORD ) VALUES (?,?,?,?,?)";
+			$stmtinsert = $db->prepare($sql);
+			$result = $stmtinsert ->execute([$name,$last_name,$email,$password,$reason]);
+			if($result){
+				echo 'Saved.';
+			}else{
+				echo "ERRORS OCURRED";
+			}
+
+		?>
 </head>
+
+<?php
+
+	?>
 
 
 
@@ -27,22 +55,22 @@
 
 
 
-			<form name="registration" method="POST" action="database.php">
+			<form name="registration" method="POST" action="registration.php">
 
 				<div class="form-group">
 					<h4>Client Type:</h4>
 					<input type="radio" name="reason" id="supplier_of_goods" value="supplier_of_goods" /> <label
-						for="supplier_of_goods" class="input-sm">Supplier of Goods</label>
+						for="reason" class="input-sm">Supplier of Goods</label>
 
 					<input type="radio" name="reason" id="supplier_of_services" value="supplier_of_services" /> <label
-						for="supplier_of_services" class="input-sm">Supplier of Services</label>
+						for="reason" class="input-sm">Supplier of Services</label>
 
 					<input type="radio" name="reason" id="administrator" value="administrator" /> <label
-						for="administrator" class="input-sm">Administrator</label>
+						for="reason" class="input-sm">Administrator</label>
 
-					<input type="radio" name="reason" id="farmer" value="farmer" /> <label for="farmer" class="input-sm">Farmer</label>
+					<input type="radio" name="reason" id="farmer" value="farmer" /> <label for="reason" class="input-sm">Farmer</label>
 
-					<input type="radio" name="reason" id="buyer" value="buyer" /> <label for="buyer" class="input-sm">Buyer</label>
+					<input type="radio" name="reason" id="buyer" value="buyer" /> <label for="reason" class="input-sm">Buyer</label>
 
 				</div>
 

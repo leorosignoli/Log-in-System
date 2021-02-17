@@ -1,6 +1,7 @@
 <?php
-    $link = mysqli_connect("localhost", "root", "", "emails");
-    if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
+$db_user = "root";
+$db_pass = "oel";
+$db_name = "emails";
+$db = new PDO('mysql:host=localhost;dbname;'.$db_name.';charset=utf8',$db_user,$db_pass);
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
