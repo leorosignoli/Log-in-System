@@ -1,142 +1,64 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Log-in</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 
-    <?php
-
-session_start();
- 
-
-
-require_once "config.php";
- 
-// Define variables and initialize with empty values
-$email = $password = "";
-$email_err = $password_err = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Check if email is empty
-    if(empty(trim($_POST["email"]))){
-        $email_err = "Please enter email.";
-    } else{
-        $email = trim($_POST["email"]);
-    }
-    
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    // Validate credentials
-    if(empty($email_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT id, email, password FROM users WHERE email = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_email);
-            
-            // Set parameters
-            $param_email = $email;
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Store result
-                mysqli_stmt_store_result($stmt);
-                
-                // Check if email exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $email, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
-                            session_start();
+</head>
+<body>
+<center>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="dflex  justify-content-center">
+                    <div class="d-flex justify-content-center form_container">
+                        <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
                             
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["email"] = $email;                            
+                            
+                            </div>
+                            <input type="text" name="email" id="email" class="form-control input_user" placeholder="E-mail" required>
 
-                        } else{
-                            // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
-                        }
-                    }
-                } else{
-                    // Display an error message if email doesn't exist
-                    $email_err = "No account found with that email.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            
+                            
+                            </div>
+                            <input type="password" name="password" id="password" class="form-control input_class" placeholder="Password" required>
+        
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom checkbox">
+                                <input type="checkbox" name="rememberme" id="customControlInline">
+                                <label class-"custom-control-input" for="customControlInline">Remember me</label>
+                            </div>
+                            <div class="mt-4">
+                                <div class="d-flex justify-content-center links">
+                                Don't have an account? <a href="registration.php" class="ml-2">Sign up!</a>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="#"> Forgot your password?</a>
+                                </div>
 
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-    
-    // Close connection
-    mysqli_close($link);
-}
-?>
-
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-        <style type="text/css">
-            body {
-                font: 14px sans-serif;
-            }
-
-            .wrapper {
-                width: 350px;
-                padding: 20px;
-            }
-        </style>
-    </head>
-
-    <body>
-    <center>
-        <div class="wrapper">
-            <h2>Login</h2>
-            <p>Please fill in your credentials to login.</p>
-            <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]); ?>" method="post">
-                <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                    <label>email</label>
-                    <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
-                    <span class="help-block">
-                        <?php echo $email_err; ?>
-                    </span>
+                            </div>
+                        </div>                        
+                        </form>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3 login-container">
+                    <button type="button" name="button" id="login" class="btn btn-primary">Login</button>
+                    </div>
                 </div>
-                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control">
-                    <span class="help-block">
-                        <?php echo $password_err; ?>
-                    </span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Login">
-                </div>
-                <div>   
-                    <a href="registration.php"><input type="submit" value="Sign-up" />
-                </div>
-            </form>
+                
+            </div>
         </div>
-    </body>
-
-    </html>
-
- 
+    </div>
 </center>
-
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
 </html>

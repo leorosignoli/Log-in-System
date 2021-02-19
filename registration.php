@@ -1,5 +1,5 @@
 <?php
-	require_once('config.php');
+	require_once('process.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,71 +18,49 @@
 			padding: 20px;
 		}
 	</style>
-	<?php
-		if(isset($_POST['submit']))
-			echo 'Working';
-			$name		 = $_POST['name'];
-			$last_name   = $_POST['last_name'];
-			$email 		 = $_POST['email'];
-			$password 	 = $_POST['password'];
-			$reason 	 = $_POST['reason'];
-			
-			echo $name . $last_name . $email . $password . $reason;
 
-			$sql = "INSERT INTO emails (TYPE_OF_CLIENT, FIRST_NAME, LAST_NAME, E-MAIL, PASSWORD ) VALUES (?,?,?,?,?)";
-			$stmtinsert = $db->prepare($sql);
-			$result = $stmtinsert ->execute([$name,$last_name,$email,$password,$reason]);
-			if($result){
-				echo 'Saved.';
-			}else{
-				echo "ERRORS OCURRED";
-			}
-
-		?>
 </head>
 
-<?php
-
-	?>
-
-
-
 <body>
+
+
 	<center>
 		<div class="wrapper">
-			<h2>Register</h2>
+			<h2>Register</h2> 
 
 
 
 
-			<form name="registration" method="POST" action="registration.php">
+			<form name="registration" method="post" action="welcome.php">
 
-				<div class="form-group">
+				<div class="btn-group shadow-0" role="group" aria-label="Group">
+				<center>
 					<h4>Client Type:</h4>
-					<input type="radio" name="reason" id="supplier_of_goods" value="supplier_of_goods" /> <label
-						for="reason" class="input-sm">Supplier of Goods</label>
+					<input type="radio" name="reason" id="supplier_of_goods" value="supplier_of_goods" required/> 
+					<label for="reason" class="input-sm">Supplier of Goods</label>
 
-					<input type="radio" name="reason" id="supplier_of_services" value="supplier_of_services" /> <label
-						for="reason" class="input-sm">Supplier of Services</label>
+					<input type="radio" name="reason" id="supplier_of_services" value="supplier_of_services" />
+					 <label for="reason" class="input-sm">Supplier of Services</label>
 
-					<input type="radio" name="reason" id="administrator" value="administrator" /> <label
-						for="reason" class="input-sm">Administrator</label>
+					<input type="radio" name="reason" id="administrator" value="administrator" /> 
+					<label for="reason" class="input-sm">Administrator</label>
 
-					<input type="radio" name="reason" id="farmer" value="farmer" /> <label for="reason" class="input-sm">Farmer</label>
+					<input type="radio" name="reason" id="farmer" value="farmer" />
+					<label for="reason" class="input-sm">Farmer</label>
 
-					<input type="radio" name="reason" id="buyer" value="buyer" /> <label for="reason" class="input-sm">Buyer</label>
-
+					<input type="radio" name="reason" id="buyer" value="buyer" />
+					<label for="reason" class="input-sm">Buyer</label>
+				</center>
 				</div>
 
-
-				<br />
+				<br/>
 
 				<div>
 					<p>
-						<label for="name">First Name:</label> <input type="text" name="name" placeholder="First Name"
+						<label for="name"></label> <input type="text" name="name" placeholder="First Name"
 							class="form-control" required />
 
-						<label for="last_name">Last Name:</label> <input type="text" name="last_name"
+						<label for="last_name"></label> <input type="text" name="last_name"
 							placeholder="Last Name" class="form-control" required />
 					</p>
 				</div>
@@ -99,16 +77,11 @@
 					echo "<p class=\"alert\">Please enter a valid Email Address.</p>"; 
 				}
 			?>
-					<label for="name">Email:</label> <input type="email" name="email" placeholder="Your Email"
-						class="form-control" required />
-				</div>
-
-
-				<br />
-
-				<div>
-					<label for="password">Password:</label> <input type="password" name="password"
-						placeholder="Your password" class="form-control" required />
+					<label for="name"></label>
+					<input type="email" name="email" placeholder="Your Email" class="form-control" required />
+				
+					<label for="password"></label> 
+					<input type="password" name="password" placeholder="Your password" class="form-control" required />
 				</div>
 				<br />
 				<div><input type="submit" name="submit" value="Submit" class="btn btn-primary" /></div>
@@ -116,4 +89,7 @@
 			</form>
 		</div>
 	</center>
+
+
+	
 </body>

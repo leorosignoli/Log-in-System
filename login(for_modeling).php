@@ -1,11 +1,26 @@
 <html>
-<center>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+        <style type="text/css">
+            body {
+                font: 14px sans-serif;
+            }
+
+            .wrapper {
+                width: 350px;
+                padding: 20px;
+            }
+        </style>
+    </head>
 
     <?php
 
 session_start();
- 
-
 
 require_once "config.php";
  
@@ -60,9 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;                            
-                            
-                            // Redirect user to welcome page
-                            header("location: welcome.php");
+
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -86,26 +99,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
-    <!DOCTYPE html>
-    <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-        <style type="text/css">
-            body {
-                font: 14px sans-serif;
-            }
-
-            .wrapper {
-                width: 350px;
-                padding: 20px;
-            }
-        </style>
-    </head>
 
     <body>
+    <center>
         <div class="wrapper">
             <h2>Login</h2>
             <p>Please fill in your credentials to login.</p>
@@ -127,13 +124,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Login">
                 </div>
+                <div>   
+                    <a href="registration.php"><input type="submit" class="btn btn-primary" value="Sign-up" />
+                </div>
             </form>
         </div>
     </body>
 
     </html>
 
-    <a href="registration.php"><input type="submit" value="Sign-up" /></a>
+ 
 </center>
 
 
