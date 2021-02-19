@@ -48,7 +48,7 @@
                                 Don't have an account? <a href="registration.php" class="ml-2">Sign up!</a>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <a href="#"> Forgot your password?</a>
+                                    <!--<a href="#"> Forgot your password?</a>-->
                                 </div>
 
                             </div>
