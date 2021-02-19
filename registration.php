@@ -1,5 +1,5 @@
 <?php
-	require_once('process.php');
+	require_once('reg_process.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
