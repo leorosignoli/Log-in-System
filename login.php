@@ -25,11 +25,11 @@
             <div class="user_card">
                 <div class="dflex  justify-content-center">
                     <div class="d-flex justify-content-center form_container">
+                        
                         <form>
+                        <div class="d-flex justify-content-center"><p><h5>Login</h5></p></div>
                         <div class="input-group mb-3">
-                            <div class="input-group-append">
-                                                       
-                            </div>
+
                             <input type="text" name="email" id="email" class="form-control input_user" placeholder="E-mail" required>
 
                         </div>
@@ -38,11 +38,18 @@
                             <input type="password" name="password" id="password" class="form-control input_class" placeholder="Password" required>
         
                         </div>
+
+                        
                         <div class="form-group">
                             <div class="custom-control custom checkbox">
                                 <input type="checkbox" name="rememberme" id="customControlInline">
                                 <label class-"custom-control-input" for="customControlInline">Remember me</label>
                             </div>
+
+                            <div class="d-flex justify-content-center mt-3 login-container">
+                                <button type="button" name="login" id="login" class="btn btn-primary">Login</button>
+                            </div>  
+                            
                             <div class="mt-4">
                                 <div class="d-flex justify-content-center links">
                                 Don't have an account? <a href="registration.php" class="ml-2">Sign up!</a>
@@ -52,10 +59,7 @@
                                 </div>
 
                             </div>
-                        </div>
-                    <div class="d-flex justify-content-center mt-3 login-container">
-                    <button type="button" name="login" id="login" class="btn btn-primary">Login</button>
-                    </div>                                                
+                        </div>                                              
                         </form>
                     </div>
 

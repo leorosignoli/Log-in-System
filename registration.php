@@ -19,21 +19,25 @@
 		}
 	</style>
 
+	<link rel="stylesheet" type="text/css" href="css/styles.css";
+
 </head>
 
 <body>
-
-
-	<center>
-		<div class="wrapper">
-			<h2>Register</h2> 
-
-
-
+<center>
+		<div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div  class="user_card">
+                <div class="dflex  justify-content-center">
+                    <div class="d-flex justify-content-center form_container">
 
 			<form name="registration" method="post" action="welcome.php">
 
-				<div class="btn-group shadow-0" role="group" aria-label="Group">
+			<div class="mt-4">
+			<h3>Registration</h3>
+			</div>
+
+				<div class="form-group" role="group" aria-label="Group">
 				<center>
 					<h4>Client Type:</h4>
 					<input type="radio" name="reason" id="supplier_of_goods" value="supplier_of_goods" required/> 
@@ -53,21 +57,21 @@
 				</center>
 				</div>
 
-				<br/>
 
-				<div>
-					<p>
-						<label for="name"></label> <input type="text" name="name" placeholder="First Name"
-							class="form-control" required />
-
-						<label for="last_name"></label> <input type="text" name="last_name"
-							placeholder="Last Name" class="form-control" required />
-					</p>
+				<div class="input-group mb-3">
+					
+						<label for="name"></label> 
+						<input type="text" name="name" placeholder="First Name" class="form-control input_user" required />
 				</div>
 
-				<br />
+				<div class="input-group mb-3">
+						<label for="last_name"></label> 
+						<input type="text" name="last_name" placeholder="Last Name" class="form-control input_user" required />
+				</div>
+				
 
-				<div>
+
+				<div class="input-group mb-3">
 					<?php 
 				$email_regex = '^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$^';
 				if ( isset( $_POST['email'] ) && empty( trim( $_POST['email'] ) ) ) {
@@ -76,20 +80,27 @@
 				} else if( isset( $_POST['email'] ) && ! preg_match( $email_regex, $_POST['email'] ) ) {
 					echo "<p class=\"alert\">Please enter a valid Email Address.</p>"; 
 				}
-			?>
+			?>	
 					<label for="name"></label>
-					<input type="email" name="email" placeholder="Your Email" class="form-control" required />
-				
-					<label for="password"></label> 
-					<input type="password" name="password" placeholder="Your password" class="form-control" required />
+					<input type="email" name="email" placeholder="Your Email" class="form-control input_user" required />
 				</div>
-				<br />
-				<div><input type="submit" name="submit" value="Submit" class="btn btn-primary" /></div>
+
+				<div class="input-group mb-3">
+					<label for="password"></label> 
+					<input type="password" name="password" placeholder="Your password" class="form-control input_class" required />
+				</div>
+				
+				<div class="d-flex justify-content-center mt-3 login-container">
+					<input type="submit" name="submit" value="Submit" class="btn btn-primary" />
+				</div>
 
 			</form>
-		</div>
-	</center>
-
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>	
+</center>
 
 	
 </body>
