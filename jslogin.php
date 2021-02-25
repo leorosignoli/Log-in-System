@@ -1,10 +1,11 @@
 <?php
 session_start();
-require_once('config.php');
+require('config.php');
 
 
 $username = $_POST['email'];
 $password = $_POST['password'];
+$password = md5($password);
 
 $sql = "SELECT * FROM info WHERE EMAIL = ? AND PSSWRD = ? LIMIT 1";
 $stmtselect  = $db->prepare($sql);

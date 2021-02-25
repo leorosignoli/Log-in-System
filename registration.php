@@ -8,19 +8,7 @@
 	<meta charset="UTF-8">
 	<title>Register</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-	<style type="text/css">
-		body {
-			font: 14px sans-serif;
-		}
-
-		.wrapper {
-			width: 350px;
-			padding: 20px;
-		}
-	</style>
-
 	<link rel="stylesheet" type="text/css" href="css/styles.css";
-
 </head>
 
 <body>
@@ -31,7 +19,7 @@
                 <div class="dflex  justify-content-center">
                     <div class="d-flex justify-content-center form_container">
 
-			<form name="registration" method="post" action="welcome.php">
+			<form name="registration" method="post" action="">
 
 			<div class="mt-4">
 			<h3>Registration</h3>
@@ -58,6 +46,7 @@
 				</div>
 
 
+
 				<div class="input-group mb-3">
 					
 						<label for="name"></label> 
@@ -68,19 +57,19 @@
 						<label for="last_name"></label> 
 						<input type="text" name="last_name" placeholder="Last Name" class="form-control input_user" required />
 				</div>
+
+
 				
-
-
-				<div class="input-group mb-3">
 					<?php 
-				$email_regex = '^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$^';
-				if ( isset( $_POST['email'] ) && empty( trim( $_POST['email'] ) ) ) {
-				 echo "<p class=\"alert\">Email is required</p>"; 
-				 $form_complete = false;
-				} else if( isset( $_POST['email'] ) && ! preg_match( $email_regex, $_POST['email'] ) ) {
-					echo "<p class=\"alert\">Please enter a valid Email Address.</p>"; 
-				}
+						$email_regex = '^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$^';
+						if ( isset( $_POST['email'] ) && empty( trim( $_POST['email'] ) ) ) {
+							 echo "<p class=\"alert\">Email is required</p>"; 
+							 $form_complete = false;
+						} else if( isset( $_POST['email'] ) && ! preg_match( $email_regex, $_POST['email'] ) ) {
+							echo "<p class=\"alert\">Please enter a valid Email Address.</p>"; 
+						}
 			?>	
+				<div class="input-group mb-3">
 					<label for="name"></label>
 					<input type="email" name="email" placeholder="Your Email" class="form-control input_user" required />
 				</div>
@@ -91,7 +80,7 @@
 				</div>
 				
 				<div class="d-flex justify-content-center mt-3 login-container">
-					<input type="submit" name="submit" value="Submit" class="btn btn-primary" />
+					<input type="submit" name="submition" value="Submit" class="btn btn-primary" />
 				</div>
 
 			</form>
